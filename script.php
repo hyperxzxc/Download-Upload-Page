@@ -15,12 +15,11 @@ ini_set("display_errors", "1"); // shows all errors
 
 if ($_FILES && $_FILES["filename"]["error"]== UPLOAD_ERR_OK)
 
+$folder = '/upload/'; //папка наших загрузок
+
 {
 	$file = strval($_FILES["filename"]["tmp_name"]);
-
-
-	$directory = __DIR__ . '/upload/' . date('Y-m-d H:i:s') . '.jpg';
-
+    $directory = __DIR__ . $folder . date('Y-m-d H:i:s') . '.jpg';
 	move_uploaded_file($file, $directory);
 	echo "Файл загружен";
 }
